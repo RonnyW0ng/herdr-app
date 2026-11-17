@@ -123,6 +123,8 @@ jobs:
       - name: Check release packaging
         if: matrix.platform == 'linux-x86_64'
         run: python3 -m unittest discover -s scripts -p test_distribution.py
+      - name: Check remote TUI alerts
+        run: node --test scripts/remote-herdr-alerts.test.mjs
       - name: Install Bun
         if: matrix.platform == 'linux-x86_64'
         run: curl -fsSL https://bun.sh/install | bash -s "bun-v1.4.4"

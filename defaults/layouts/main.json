@@ -28,15 +28,32 @@
       "resizable": false,
       "children": [
         {
-          "id": "brand",
-          "type": "block",
+          "id": "brand-with-alerts",
+          "type": "row",
           "size": {
             "px": 46
           },
           "window_drag": true,
-          "content": {
-            "mod": "workspace-chrome"
-          }
+          "resizable": false,
+          "children": [
+            {
+              "id": "brand",
+              "type": "block",
+              "content": {
+                "mod": "workspace-chrome"
+              }
+            },
+            {
+              "id": "remote-herdr-alerts",
+              "type": "block",
+              "size": {
+                "px": 0
+              },
+              "content": {
+                "mod": "remote-herdr-alerts"
+              }
+            }
+          ]
         },
         {
           "id": "sidebar-lists",

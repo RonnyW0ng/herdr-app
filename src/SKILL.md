@@ -53,6 +53,13 @@ For a remote space:
 herdr-app do space.new --name "remote api" --machine vps --folder /srv/api
 ```
 
+The shipped layouts bridge agent sounds from a `herdr` TUI running in a remote
+pane: requests and unwatched completions sound locally, checked every two seconds.
+Settings > Alerts controls them. Initial reads and recovery after failed reads
+stay quiet. Explicit `--session NAME` works; environment-only session/socket
+overrides and TUI `--remote` connections are not discovered. Personal layouts
+need one `remote-herdr-alerts` mod block; see the installed guide.
+
 The folder is on that machine; tabs and splits in the space stay there.
 New-space keys and clicks follow the focused space's machine. Script commands
 without `--machine` still use this computer; `--machine ''` explicitly chooses it.

@@ -23,11 +23,30 @@
   "gap": 8,
   "children": [
     {
-      "id": "tabs",
-      "type": "block",
+      "id": "tabs-with-alerts",
+      "type": "row",
       "size": { "px": 38 },
       "window_drag": true,
-      "content": { "mod": "terminals-bar" }
+      "resizable": false,
+      "children": [
+        {
+          "id": "tabs",
+          "type": "block",
+          "content": {
+            "mod": "terminals-bar"
+          }
+        },
+        {
+          "id": "remote-herdr-alerts",
+          "type": "block",
+          "size": {
+            "px": 0
+          },
+          "content": {
+            "mod": "remote-herdr-alerts"
+          }
+        }
+      ]
     },
     {
       "id": "main",

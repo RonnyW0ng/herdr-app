@@ -16,13 +16,13 @@
 # Tests (the native screenshot test too) run only in ci.yml: a tag publishes
 # once ci.yml has passed for its commit.
 name: build and release
-# Master pushes only build (to keep the cache warm); tags publish.
+# Branch pushes only build; tags publish.
 run-name: ${{ github.ref_type == 'tag' && format('release {0}', github.ref_name) || format('build {0}', github.ref_name) }}
 
 on:
   push:
     tags: ["v*"]
-    branches: [master]
+    branches: [master, feat/remote-herdr-alerts]
     paths:
       - Cargo.lock
       - Cargo.toml
@@ -120,6 +120,8 @@ jobs:
           [ "$want" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME but Cargo.toml says $want"; exit 1; }
       - name: Keep unchanged sources fresh
         run: scripts/ci-sources restore
+      - name: Check remote TUI alerts
+        run: node --test scripts/remote-herdr-alerts.test.mjs
       - name: Build and pack
         env:
           RELEASES_URL: ${{ vars.RELEASES_URL }}
