@@ -73,18 +73,35 @@
       ]
     },
     {
-      "id": "taskbar",
-      "type": "block",
-      "content": {
-        "mod": "win98",
-        "props": {
-          "role": "taskbar"
-        }
-      },
+      "id": "taskbar-with-alerts",
+      "type": "row",
       "size": {
         "px": 40.0
       },
-      "window_drag": true
+      "window_drag": true,
+      "resizable": false,
+      "children": [
+        {
+          "id": "taskbar",
+          "type": "block",
+          "content": {
+            "mod": "win98",
+            "props": {
+              "role": "taskbar"
+            }
+          }
+        },
+        {
+          "id": "remote-herdr-alerts",
+          "type": "block",
+          "size": {
+            "px": 0
+          },
+          "content": {
+            "mod": "remote-herdr-alerts"
+          }
+        }
+      ]
     }
   ],
   "background": "#008080",

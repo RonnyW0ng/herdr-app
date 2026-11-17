@@ -69,6 +69,14 @@ Spaces on that machine run their terminals there, not on your computer.
 Each machine keeps its spaces, tabs and splits in its core. Connected screens share that structure and the live terminals, but keep their own focus and zoom.
 Remote work keeps running when your local window closes or your laptop sleeps, as long as the remote machine and core stay up.
 
+If you run the `herdr` TUI inside a remote pane, the built-in layouts also
+play its agent alerts on your local computer. A mod checks that TUI's agent
+list every two seconds; Settings → Alerts controls the sounds. Its first
+read and reconnects stay quiet. Explicit `--session NAME` sessions work too;
+environment-only session/socket overrides and nested TUI `--remote` connections
+are not discovered. See the [mod guide](defaults/AGENTS.md#the-person-settingsjson) for
+adding the bridge to a personal layout.
+
 ## Make it yours
 
 Open the command palette to find an action by name, or open Settings to change fonts, colors, sounds and other preferences.
@@ -136,6 +144,7 @@ On Linux it links to this checkout, so keep the checkout in place.
 Quit and reopen Herdr to use the new build.
 
 Documentation checks also need [Bun](https://bun.sh): `just docs-check` checks generated pages and CLI examples; `just docs-generate` refreshes the reference pages.
+`just test` also uses Node.js 20 or newer for the remote TUI alert tests.
 
 To compare drawing changes on Windows, Linux or macOS, run the same fixed workloads against each build:
 

@@ -43,6 +43,7 @@ build:
     cargo build --locked
 
 test:
+    node --test scripts/remote-herdr-alerts.test.mjs
     bun test scripts/files.test.ts scripts/machine-add.test.ts scripts/picker.test.ts scripts/palette.test.ts scripts/agents.test.ts scripts/spaces.test.ts scripts/mod-storage.test.ts scripts/worktree.test.ts scripts/settings.test.ts scripts/tabs.test.ts
     cargo test --locked
 

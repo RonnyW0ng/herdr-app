@@ -728,6 +728,18 @@ What's about the user, never a look:
   goes there when clicked. `done` / `blocked` replace the bundled MP3s
   (path absolute or relative to `~/.config/herdr-app`). Changes apply live,
   including the Play buttons in Settings > Alerts.
+  The shipped layouts also load `remote-herdr-alerts`: when a remote pane's
+  foreground program is the `herdr` TUI, this mod reads `herdr agent list`
+  on that machine every two seconds and plays these sounds locally. Requests
+  ring; completion rings unless that TUI and its inner agent have focus in
+  the active window. Initial reads and recovery after failed reads stay quiet.
+  Explicit `herdr --session NAME` sessions are supported; environment-only
+  session/socket overrides and TUI `--remote` connections are not discovered.
+  Failures show a toast and retry after 30 seconds. For a personal layout,
+  include one layout-owned block (beside a toolbar, not inside a tab):
+  `{ "id": "remote-herdr-alerts", "type": "block", "size": { "px": 0 },
+     "content": { "mod": "remote-herdr-alerts" } }`.
+  Use a row with no gap/divider and `resizable: false` so it takes no space.
 - `core`: the herdr-core binary to use, when it isn't where Herdr looks
   (PATH, the login shell's PATH, `~/.local/bin`, Homebrew, mise, Nix,
   cargo). Read at start.
